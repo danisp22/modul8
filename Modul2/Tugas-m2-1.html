@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Pemesanan</title>
+  </head>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin-inline: 3em;
+    }
+
+    h1 {
+      font-weight: normal;
+    }
+
+    div.form-group {
+      display: flex;
+      margin-block: 2em;
+    }
+
+    label {
+      width: 30%;
+    }
+
+    input,
+    select {
+      border-radius: 5px;
+      border: 0.5px solid gray;
+      height: 40px;
+      width: 100%;
+    }
+
+    #durasi-menginap {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+    }
+
+    #checkbox-makanpagi {
+      display: flex;
+      align-items: center;
+    }
+
+    .form-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-button button {
+      padding: 10px 20px;
+      border-radius: 5px;
+      border-width: 0;
+      color: white;
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <body>
+    <h1>Form Pemesanan</h1>
+
+    <div class="form-group">
+      <label>ID Pemesan:</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>Nama Pemesan:</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-group">
+      <label>Tipe Kamar:</label>
+      <select>
+        <option>--Pilih--</option>
+        <option>STANDAR</option>
+        <option>DELUXE</option>
+        <option>FAMILY</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Harga</label>
+      <input type="number" />
+    </div>
+
+    <div class="form-group">
+      <label>Tanggal Pesan:</label>
+      <input type="date" />
+    </div>
+
+    <div class="form-group">
+      <label>Durasi Menginap:</label>
+      <div id="durasi-menginap">
+        <input type="number" />
+        <p>Hari</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label style="width: 23%">Termasuk Breakfast</label>
+      <div id="checkbox-makanpagi">
+        <input type="checkbox" />
+        <label>Ya</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Total Bayar:</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-button">
+      <button style="background-color: #2d2dca">Simpan</button>
+      <button style="background-color: #db662f">Batal</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Teks Input</title>
+  </head>
+  <body>
+    <h1>Form Input Data Mahasiswa</h1>
+    <form method="get" action="m2-2.html">
+      <table border="0">
+        <tr>
+          <td><label for="inputText">Nomor Induk Mahasiswa</label></td>
+          <td>
+            <input type="number" id="nim" name="nim" pattern="[0-9]" required />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="inputText">Nama</label></td>
+          <td>
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              maxlength="35"
+              min="5"
+              size="50"
+              required
+            />
+            <span>Harus 5-35 Karakter</span>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="inputText">Password</label></td>
+          <td>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              maxlength="20"
+              min="5"
+              size="40"
+              pattern="(?=.[a-aZ])(?=.[0-9])(?=.*[!@#].+)"
+              required
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="inputText">Nomor Telpon</label></td>
+          <td>
+            <input
+              type="text"
+              id="telp"
+              name="telp"
+              maxlength="12"
+              min="10"
+              pattern="08."
+              placeholder="08xxxxxx"
+              required
+            />
+            <span>Harus 10-12 Karakter</span>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="inputText">Tanggal Lahir</label></td>
+          <td>
+            <input
+              type="date"
+              id="tanggal_lahir"
+              name="tanggal_lahir"
+              required
+            />
+            <span>Harus 10-12 Karakter</span>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="inputText">Email</label></td>
+          <td>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="nama@contoh"
+              required
+            />
+            <span>Harus 10-12 Karakter</span>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="inputText">ALamat</label></td>
+          <td>
+            <input
+              name="nama"
+              placeholder="nama@contoh"
+              cols="35"
+              rows="5"
+              required
+            />
+            <span>Harus 10-12 Karakter</span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button name="save" value="simpan">Simpan</button>
+            <button type="reset" name="cancel" value="batal">Batal</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
