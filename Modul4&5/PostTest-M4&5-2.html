@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nota Penjualan</title>
+    <script>
+      const products = {
+        B001: { name: "Buku", price: 5000 },
+        B002: { name: "Penggaris", price: 1500 },
+        B003: { name: "Pulpen", price: 2000 },
+      };
+
+      function updateProductInfo() {
+        const kode = document.form1.kode.value;
+        const product = products[kode];
+
+        if (product) {
+          document.form1.namaBarang.value = product.name;
+          document.form1.harga.value = product.price;
+        } else {
+          document.form1.namaBarang.value = "";
+          document.form1.harga.value = "";
+        }
+
+        calculateTotal();
+      }
+
+      function calculateTotal() {
+        const kode = document.form1.kode.value;
+        const jumlahBeli = parseInt(document.form1.jumlahBeli.value) || 0;
+        const product = products[kode];
+
+        if (product) {
+          const harga = product.price;
+          const jumlahBayar = harga * jumlahBeli;
+
+          let persenPotongan = 0;
+          if (jumlahBeli >= 0 && jumlahBeli <= 10) {
+            persenPotongan = 5;
+          } else if (jumlahBeli >= 11 && jumlahBeli <= 20) {
+            persenPotongan = 10;
+          } else if (jumlahBeli > 20) {
+            persenPotongan = 15;
+          }
+
+          const potongan = (persenPotongan / 100) * jumlahBayar;
+          const totalBayar = jumlahBayar - potongan;
+
+          document.form1.jumlahBayar.value = jumlahBayar;
+          document.form1.persenPotongan.value = persenPotongan;
+          document.form1.potongan.value = potongan;
+          document.form1.totalBayar.value = totalBayar;
+        } else {
+          document.form1.jumlahBayar.value = "";
+          document.form1.persenPotongan.value = "";
+          document.form1.potongan.value = "";
+          document.form1.totalBayar.value = "";
+        }
+      }
+
+      function tampilkanNota() {
+        const kode = document.form1.kode.value;
+        const namaBarang = document.form1.namaBarang.value;
+        const harga = document.form1.harga.value;
+        const jumlahBeli = document.form1.jumlahBeli.value;
+        const jumlahBayar = document.form1.jumlahBayar.value;
+        const potongan = document.form1.potongan.value;
+        const persenPotongan = document.form1.persenPotongan.value;
+        const totalBayar = document.form1.totalBayar.value;
+
+        const nota = `
+              <b>Nota Penjualan</b><br> <br>
+              Kode Barang =  ${kode}<br>
+              Nama Barang =  ${namaBarang}<br>
+              Harga Barang =  ${harga}<br>
+              Jumlah Beli =  ${jumlahBeli}<br>
+              --------------------<br>
+              Jumlah Bayar = ${jumlahBayar}<br>
+              Potongan =  ${potongan}<br>
+              ====================<br>
+              Total Bayar =  ${totalBayar}
+          `;
+        document.getElementById("output").innerHTML = nota;
+      }
+    </script>
+  </head>
+  <body>
+    <form name="form1">
+      <table border="1">
+        <tr>
+          <td colspan="2">
+            <center>Data Penjualan Barang</center>
+          </td>
+        </tr>
+        <tr>
+          <td>Kode</td>
+          <td>
+            <select name="kode" onchange="updateProductInfo()">
+              <option value="">--Pilih Salah Satu--</option>
+              <option value="B001">B001</option>
+              <option value="B002">B002</option>
+              <option value="B003">B003</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Jumlah Beli</td>
+          <td>
+            <input
+              type="text"
+              name="jumlahBeli"
+              value="0"
+              oninput="calculateTotal()"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Nama Barang</td>
+          <td><input type="text" name="namaBarang" readonly /></td>
+        </tr>
+        <tr>
+          <td>Harga</td>
+          <td><input type="text" name="harga" readonly /></td>
+        </tr>
+        <tr>
+          <td>Jumlah Bayar</td>
+          <td><input type="text" name="jumlahBayar" readonly /></td>
+        </tr>
+        <tr>
+          <td>
+            Potongan
+            <input
+              type="text"
+              name="persenPotongan"
+              size="5"
+              maxlength="10"
+              readonly
+            />
+            %
+          </td>
+          <td>
+            <input type="text" name="potongan" readonly />
+          </td>
+        </tr>
+        <tr>
+          <td>Total Bayar</td>
+          <td><input type="text" name="totalBayar" readonly /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="button" value="TAMPILKAN" onclick="tampilkanNota()" />
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <div id="output" style="margin-top: 20px; font-weight: bold"></div>
+  </body>
+</html>
