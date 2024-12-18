@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>jQuery</title>
+<script src="jquery-3.7.1.min.js"></script>
+
+<style>
+    .tab-button {
+        cursor: pointer;
+        padding: 10px 20px;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        display: inline-block;
+        margin-right: 5px;
+        font-family: Arial, sans-serif;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .tab-button:hover {
+        background-color: #e1e1e1;
+    }
+
+    .tab-button.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #0056b3;
+    }
+
+    .tab {
+        display: none;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        margin-top: 10px;
+    }
+
+    .tab.active {
+        display: block;
+    }
+
+</style>
+</head>
+<body>
+    <h1>Tugas Web Developer</h1>
+    <div>
+        <div class="tab-button active" data-tab="tab1">Tab 1</div>
+        <div class="tab-button" data-tab="tab2">Tab 2</div>
+        <div class="tab-button" data-tab="tab3">Tab 3</div>
+    </div>
+
+    <div id="tab1" class="tab active">
+        <h2>Front-End Developer</h2>
+        <p>Mengoptimalkan fungsi aplikasi berdasarkan User Interface (UI)
+           dan User Experience (UX).</p>
+    </div>
+
+    <div id="tab2" class="tab">
+        <h2>Back-End Developer</h2>
+        <p>Berjalan di sisi server dengan mengelola data menjadi informasi
+           dari database.</p>
+    </div>
+
+    <div id="tab3" class="tab">
+        <h2>Full-Stack Development</h2>
+        <p>Memiliki kemampuan di kedua sisi, yaitu front-end dan back-end,
+           sehingga dapat menangani semua aspek pengembangan web.</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            
+            $(".tab-button").click(function() {
+                
+                $(".tab").removeClass("active").hide();
+                $(".tab-button").removeClass("active");
+
+                
+                const tabToShow = $(this).data("tab");
+                $("#" + tabToShow).addClass("active").fadeIn(); 
+                $(this).addClass("active");
+            });
+        });
+    </script>
+</body>
+</html>

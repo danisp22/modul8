@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Pemesanan</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin-inline: 3em;
+      }
+
+      h1 {
+        font-weight: normal;
+      }
+
+      .form-group {
+        display: flex;
+        margin-block: 1em;
+      }
+
+      label {
+        width: 30%;
+      }
+
+      input,
+      select {
+        border-radius: 5px;
+        border: 0.5px solid gray;
+        height: 40px;
+        width: 100%;
+      }
+
+      .form-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .form-button button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border-width: 0;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Form Pemesanan</h1>
+    <div class="form-group">
+      <label>Nama Pemesan:</label>
+      <input type="text" id="nama" required />
+    </div>
+    <div class="form-group">
+      <label>Jenis Kelamin:</label>
+      <select id="jenis_kelamin">
+        <option value="">--Pilih--</option>
+        <option value="Laki-Laki">Laki-Laki</option>
+        <option value="Perempuan">Perempuan</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Nomor Identitas:</label>
+      <input type="text" id="nomor_identitas" maxlength="16" />
+    </div>
+    <div class="form-group">
+      <label>Tipe Kamar:</label>
+      <select id="tipe_kamar">
+        <option value="">--Pilih--</option>
+        <option value="STANDAR">Standar</option>
+        <option value="DELUXE">Deluxe</option>
+        <option value="FAMILY">Family</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Harga:</label>
+      <input type="number" id="harga" readonly />
+    </div>
+    <div class="form-group">
+      <label>Tanggal Pesan:</label>
+      <input type="date" id="tanggal_pesan" />
+    </div>
+    <div class="form-group">
+      <label>Durasi Menginap:</label>
+      <input type="number" id="durasi" />
+    </div>
+    <div class="form-group">
+      <label style="width: 23%">Termasuk Breakfast</label>
+      <div
+        id="checkbox-makanpagi"
+        style="display: flex; align-items: center; gap: 10px"
+      >
+        <input type="checkbox" id="breakfast" />
+        <label for="breakfast">Ya</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Total Bayar:</label>
+      <input type="text" id="total_bayar" readonly />
+    </div>
+    <div class="form-button">
+      <button id="simpan" style="background-color: #2d2dca">Simpan</button>
+      <button style="background-color: #db662f">Batal</button>
+    </div>
+    <div
+      id="resume"
+      style="
+        display: none;
+        background: #e6e6e6;
+        padding: 15px;
+        margin-top: 20px;
+      "
+    >
+      <h2>Resume Pemesanan</h2>
+      <p id="output"></p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        const hargaKamar = {
+          STANDAR: 300000,
+          DELUXE: 500000,
+          FAMILY: 800000,
+        };
+
+        $("#tipe_kamar").change(function () {
+          const tipe = $(this).val();
+          $("#harga").val(hargaKamar[tipe] || "");
+        });
+
+        $("#simpan").click(function () {
+          const nomorIdentitas = $("#nomor_identitas").val();
+          if (!/^\d{16}$/.test(nomorIdentitas)) {
+            alert("Isian salah, harus 16 digit");
+            return;
+          }
+
+          const durasi = $("#durasi").val();
+          if (isNaN(durasi) || durasi <= 0) {
+            alert("Durasi menginap harus angka positif");
+            return;
+          }
+
+          const harga = parseInt($("#harga").val()) || 0;
+          const includeBreakfast = $("#breakfast").is(":checked");
+          let total = harga * durasi;
+
+          if (durasi > 3) {
+            total *= 0.9;
+          }
+
+          if (includeBreakfast) {
+            total += 80000 * durasi;
+          }
+
+          $("#total_bayar").val(total);
+
+          const nama = $("#nama").val();
+          const jenisKelamin = $("#jenis_kelamin").val();
+          const tipeKamar = $("#tipe_kamar").val();
+          const diskon = durasi > 3 ? "10%" : "0%";
+          const breakfast = includeBreakfast ? "Ya" : "Tidak";
+
+          const output = `
+                    <b>Nama:</b> ${nama}<br>
+                    <b>Nomor Identitas:</b> ${nomorIdentitas}<br>
+                    <b>Jenis Kelamin:</b> ${jenisKelamin}<br>
+                    <b>Tipe Kamar:</b> ${tipeKamar}<br>
+                    <b>Durasi:</b> ${durasi} Hari<br>
+                    <b>Diskon:</b> ${diskon}<br>
+                    <b>Breakfast:</b> ${breakfast}<br>
+                    <b>Total Bayar:</b> Rp ${total.toLocaleString()}
+                `;
+
+          $("#output").html(output);
+          $("#resume").show();
+        });
+      });
+    </script>
+  </body>
+</html>
