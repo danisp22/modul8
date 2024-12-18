@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Hotel</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header .kiri {
+        display: flex;
+        align-items: center;
+      }
+
+      header .kiri img {
+        width: 85px;
+        height: 85px;
+        margin-right: 10px;
+      }
+
+      header .kanan img {
+        width: 550px;
+        height: 75px;
+        margin-right: 5px;
+      }
+
+      nav {
+        display: flex;
+        background-color: #444444;
+      }
+      nav a {
+        color: white;
+        padding: 14px 20px;
+        text-decoration: none;
+        display: block;
+      }
+      nav a:hover {
+        background-color: #575757;
+      }
+      .dropdown {
+        position: relative;
+      }
+      .submenu,
+      .sub-submenu {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        min-width: 160px;
+        z-index: 1;
+      }
+      .submenu a,
+      .sub-submenu a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .submenu a:hover,
+      .sub-submenu a:hover {
+        background-color: #575757;
+      }
+      .dropdown:hover .submenu {
+        display: block;
+      }
+      .submenu .dropdown:hover .sub-submenu {
+        display: block;
+        left: 100%;
+        top: 0;
+      }
+      .sub-submenu2 {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+      }
+      .submenu .dropdown:hover .sub-submenu .dropdown:hover .sub-submenu2 {
+        position: absolute;
+        display: block;
+        left: 100%;
+        background: #333;
+        top: 0;
+      }
+      .container {
+        display: flex;
+      }
+      .leftbar {
+        width: 20%;
+        height: 450px;
+        background-color: #333;
+        padding: 10px;
+      }
+      .container .leftbar iframe {
+        width: 250px;
+        height: 125px;
+      }
+
+      .content {
+        width: 80%;
+        padding: 10px;
+      }
+      .content img {
+        width: 327px;
+        height: 113px;
+        margin: 10px;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="kiri">
+        <img
+          src="https://i.pinimg.com/564x/a6/bf/29/a6bf29e81af9d0ddbd5aeb1bf5104921.jpg"
+          alt=""
+        />
+        <h1>BEST HOTEL</h1>
+      </div>
+      <div class="kanan">
+        <img
+          src="https://i.pinimg.com/564x/e8/d2/85/e8d285ab5592923b38eb6d6b1e649366.jpg"
+          alt=""
+        />
+      </div>
+    </header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Kamar</a>
+      <div class="dropdown">
+        <a href="#">Fasilitas</a>
+        <div class="submenu">
+          <a href="#">Petualangan Alam</a>
+          <div class="dropdown">
+            <a href="#">Kolam Renang</a>
+            <div class="sub-submenu">
+              <a href="#">Sumber Air Panas</a>
+              <div class="dropdown">
+                <a href="#">Kolam Anak & Dewasa</a>
+                <div class="sub-submenu2">
+                  <a href="#">Reguler</a>
+                  <a href="#">Premium</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="#">Pusat Kebugaran</a>
+          <a href="#">Ruang Rapat</a>
+        </div>
+      </div>
+      <a href="#">Pesan Sekarang</a>
+    </nav>
+    <div class="container">
+      <div class="leftbar">
+        <iframe
+          width="100%"
+          height="200"
+          src="https://www.youtube.com/embed/V0ZmEre9PIU"
+        ></iframe>
+        <iframe
+          width="100%"
+          height="200"
+          src="https://www.youtube.com/embed/V0ZmEre9PIU"
+        ></iframe>
+        <iframe
+          width="100%"
+          height="200"
+          src="https://www.youtube.com/embed/V0ZmEre9PIU"
+        ></iframe>
+      </div>
+      <div class="content">
+        <div class="top">
+          <img
+            src="https://i.pinimg.com/564x/1a/bf/99/1abf99908abb90f5aa908e2fc4d4c450.jpg"
+            alt="Foto 1"
+            width="100%"
+          />
+          <img
+            src="https://i.pinimg.com/564x/dd/09/f3/dd09f3532c7ed966ed35c40fde0b5816.jpg"
+            alt="Foto 2"
+            width="100%"
+          />
+          <img
+            src="https://i.pinimg.com/564x/98/2a/f2/982af2a323d06db7abc4e272f7bb21bf.jpg"
+            alt="Foto 3"
+            width="100%"
+          />
+        </div>
+        <div class="middle">
+          <img
+            src="https://i.pinimg.com/564x/1a/bf/99/1abf99908abb90f5aa908e2fc4d4c450.jpg"
+            alt="Foto 1"
+            width="100%"
+          />
+          <img
+            src="https://i.pinimg.com/564x/dd/09/f3/dd09f3532c7ed966ed35c40fde0b5816.jpg"
+            alt="Foto 2"
+            width="100%"
+          />
+          <img
+            src="https://i.pinimg.com/564x/98/2a/f2/982af2a323d06db7abc4e272f7bb21bf.jpg"
+            alt="Foto 3"
+            width="100%"
+          />
+        </div>
+        <div class="buttom">
+          <img
+            src="https://i.pinimg.com/564x/1a/bf/99/1abf99908abb90f5aa908e2fc4d4c450.jpg"
+            alt="Foto 1"
+            width="100%"
+          />
+          <img
+            src="https://i.pinimg.com/564x/dd/09/f3/dd09f3532c7ed966ed35c40fde0b5816.jpg"
+            alt="Foto 2"
+            width="100%"
+          />
+          <img
+            src="https://i.pinimg.com/564x/98/2a/f2/982af2a323d06db7abc4e272f7bb21bf.jpg"
+            alt="Foto 3"
+            width="100%"
+          />
+        </div>
+      </div>
+    </div>
+    <footer>© 2024 Queen Best Hotel</footer>
+  </body>
+</html>
